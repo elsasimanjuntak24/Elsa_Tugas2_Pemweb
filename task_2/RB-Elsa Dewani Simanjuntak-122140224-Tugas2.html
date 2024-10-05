@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pendaftaran & Detail Informasi</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Heading Style */
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Form Box Styles */
+        .form-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        /* Detail Box Styles */
+        .detail-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        strong {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Pendaftaran</h1>
+    <div class="form-box">
+        <form id="pendaftaran-form">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="usia">Usia:</label>
+            <input type="number" id="usia" name="usia" required><br>
+
+            <input type="submit" value="Daftar">
+        </form>
+    </div>
+
+    <div id="detail-section" class="detail-box" style="display: none;">
+        <h1>Detail Informasi Pendaftar</h1>
+        <table>
+            <tr>
+                <td><strong>Nama:</strong></td>
+                <td id="nama-detail"></td>
+            </tr>
+            <tr>
+                <td><strong>Email:</strong></td>
+                <td id="email-detail"></td>
+            </tr>
+            <tr>
+                <td><strong>Usia:</strong></td>
+                <td id="usia-detail"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('pendaftaran-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form dari reload halaman
+            
+            // Ambil nilai dari form
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const usia = document.getElementById('usia').value;
+
+            // Menampilkan data di bagian detail
+            document.getElementById('nama-detail').textContent = nama;
+            document.getElementById('email-detail').textContent = email;
+            document.getElementById('usia-detail').textContent = usia;
+
+            // Sembunyikan form dan tampilkan detail
+            document.querySelector('.form-box').style.display = 'none';
+            document.getElementById('detail-section').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
